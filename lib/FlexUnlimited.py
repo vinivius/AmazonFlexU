@@ -449,7 +449,7 @@ class FlexUnlimited:
           self.__processOffer(offerResponseObject)
         self.__retryCount += 1
       elif offersResponse.status_code == 400:
-        minutes_to_wait = 30 * self.__rate_limit_number
+        minutes_to_wait = 2 * self.__rate_limit_number
         Log.info("Rate limit reached. Waiting for " + str(minutes_to_wait) + " minutes.")
         time.sleep(minutes_to_wait * 60)
         if self.__rate_limit_number < 4:
