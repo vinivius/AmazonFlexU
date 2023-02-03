@@ -19,7 +19,7 @@ if __name__ == "__main__":
         print("Invalid argument provided.")
     else:
       flexUnlimited.run()
-      seconds = random.randint(30, 60)
+      seconds = random.randint(0, 3)
       while seconds > 0:
           print(seconds)
           time.sleep(1)
