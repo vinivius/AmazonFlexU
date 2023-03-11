@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, render_template
 import sqlite3
 import bcrypt
+import json
 
 app = Flask(__name__)
 
@@ -42,6 +43,28 @@ def signup():
         con.close()
         return redirect('/')
     return render_template('signup.html')
+
+@app.route('/settings', methods=['GET', 'POST'])
+def settings():
+    if request.method == 'POST':
+        settings = {
+            "minBlockRate": request.form.get('minBlockRate', 150),
+            "minPayRatePerHour": request.form.get('minPayRatePerHour', 32),
+            "arrivalBuffer": request.form.get('arrivalBuffer', 45),
+            "desiredWarehouses": request.form.getlist('desiredWarehouses'),
+            "desiredStartTime": request.form.get('desiredStartTime', "00:00"),
+            "desiredEndTime": request.form.get('desiredEndTime', "23:30"),
+            "desiredWeekdays": request.form.getlist('desiredWeekdays'),
+            "retryLimit": request.form.get('retryLimit', 10),
+            "refreshInterval": request.form.get('refreshInterval', 0.2),
+        }
+        with open('settings.json', 'w') as f:
+            json.dump(settings, f)
+        return redirect('/settings')
+    with open('settings.json', 'r') as f:
+        settings = json.load(f)
+    return render_template('settings.html', settings=settings)
+
 
 @app.route('/welcome')
 def welcome():

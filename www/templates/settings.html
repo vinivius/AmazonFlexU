@@ -1,0 +1,41 @@
+<form method="post">
+    <div>
+      <label for="minBlockRate">Min Block Rate:</label>
+      <input type="text" id="minBlockRate" name="minBlockRate" value="{{ settings['minBlockRate'] }}">
+    </div>
+    <div>
+      <label for="minPayRatePerHour">Min Pay Rate per Hour:</label>
+      <input type="text" id="minPayRatePerHour" name="minPayRatePerHour" value="{{ settings['minPayRatePerHour'] }}">
+    </div>
+    <div>
+      <label for="arrivalBuffer">Arrival Buffer:</label>
+      <input type="text" id="arrivalBuffer" name="arrivalBuffer" value="{{ settings['arrivalBuffer'] }}">
+    </div>
+    <div>
+      <label for="desiredWarehouses">Desired Warehouses:</label>
+      <input type="text" id="desiredWarehouses" name="desiredWarehouses" value="{{ ', '.join(settings['desiredWarehouses']) }}">
+    </div>
+    <div>
+      <label for="desiredStartTime">Desired Start Time:</label>
+      <input type="text" id="desiredStartTime" name="desiredStartTime" value="{{ settings['desiredStartTime'] }}">
+    </div>
+    <div>
+        <label for="desiredEndTime">Desired End Time:</label>
+        <input type="text" id="desiredEndTime" name="desiredEndTime" value="{{ settings['desiredEndTime'] }}">
+    </div>
+    <div>
+        <label for="desiredWeekdays">Desired Weekdays:</label>
+        <input type="text" id="desiredWeekdays" name="desiredWeekdays" value="{{ ', '.join(settings['desiredWeekdays']) }}">
+    </div>
+    <div>
+        <label for="retryLimit">Retry Limit:</label>
+        <input type="text" id="retryLimit" name="retryLimit" value="{{ settings['retryLimit'] }}">
+    </div>
+    <div>
+        <label for="refreshInterval">Refresh Interval:</label>
+        <input type="text" id="refreshInterval" name="refreshInterval" value="{{ settings['refreshInterval'] }}">
+    </div>
+    <div>
+        <input type="submit" value="Save Settings">
+    </div>
+</form>
